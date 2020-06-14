@@ -1,0 +1,19 @@
+page.headerData.880909099 = FLUIDTEMPLATE
+page.headerData.880909099 {
+  file = EXT:favicon/Resources/Private/Templates/Favicon.html
+
+  variables {
+    faviconSrc = FILES
+    faviconSrc {
+      references {
+        data = levelfield: -1, tx_favicon_favicon, slide
+        listNum = 0
+      }
+
+      renderObj = IMG_RESOURCE
+      renderObj {
+        file.import.dataWrap = {file:current:storage}:{file:current:identifier}
+      }
+    }
+  }
+}

@@ -3,9 +3,14 @@
 .AppleDouble
 .LSOverride
 
+.idea
+Build
+config
+var
+composer.lock
+
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+## Description: Import/Restore database
+## Usage: db-import
+## Example: "ddev db-import"
+
+ddev import-db --src=./.ddev/backup/db.sql.gz
+
+ddev typo3cms cleanup:updatereferenceindex

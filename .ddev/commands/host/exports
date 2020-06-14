@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+## Description: Edit /etc/exports/ for nfs mounts. Inspired by https://raw.githubusercontent.com/drud/ddev/master/scripts/macos_ddev_nfs_setup.sh
+## Usage: exports
+## Example: "ddev exports" Needs to be run once on startup, preferably via ddev pre-start hook.
+
+# Move to script folder
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd $DIR
+
+OS=$(uname -s)
+
+if [ $OS != "Darwin" ]; then
+    echo "This script is OSX-only. Please do not run it on any other Unix."
+    exit 101
+fi
+
+if [[ $EUID -eq 0 ]]; then
+    echo "This script must NOT be run with sudo/root. Please re-run without sudo." 1>&2
+    exit 102
+fi
+
+# Get parent directory
+# In this case the script resides in ".ddev/commands/host/" we need the parent folder of the app.
+parent="$(
+    cd ../../../
+    pwd
+)"
+
+LINE="${parent} -alldirs -mapall=$(id -u):$(id -g) localhost"
+FILE=/etc/exports
+TRACKER="#TEST_DISK_ACCESS#"
+
+echo "== Testing write access ..."
+
+# Test to write
+sudo bash -c "echo '${TRACKER}' >> $FILE" || (echo "Unable to edit /etc/exports, need Full Disk Access on Mojave and later" && exit 103)
+
+# If write was successful, remove the test pattern from file
+sudo sed -i "" "/${TRACKER}/d" /etc/exports
+
+echo "== Write to files ..."
+
+# Write to exports
+grep -qF -- "$LINE" "$FILE" || (sudo echo "$LINE" | sudo tee -a $FILE >/dev/null)
+
+# Write to configuration
+LINE="nfs.server.mount.require_resv_port = 0"
+FILE=/etc/nfs.conf
+grep -qF -- "$LINE" "$FILE" || (sudo echo "$LINE" | sudo tee -a $FILE >/dev/null)
+
+echo "== Restarting nfsd..."
+sudo nfsd enable && sudo nfsd restart

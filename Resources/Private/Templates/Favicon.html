@@ -1,0 +1,20 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{faviconSrc}">
+    <link rel="shortcut icon" href="{f:uri.image(src: '{faviconSrc}', width: 16, height: 16, absolute: 1)}">
+    <link rel="icon" type="image/png" sizes="64x64" href="{f:uri.image(src: '{faviconSrc}', width: 64, height: 64, absolute: 1)}">
+
+    <link rel="apple-touch-icon" href="{f:uri.image(src: '{faviconSrc}', width: 180, height: 180, absolute: 1)}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{f:uri.image(src: '{faviconSrc}', width: 57, height: 57, absolute: 1)}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{f:uri.image(src: '{faviconSrc}', width: 60, height: 60, absolute: 1)}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{f:uri.image(src: '{faviconSrc}', width: 76, height: 76, absolute: 1)}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{f:uri.image(src: '{faviconSrc}', width: 120, height: 120, absolute: 1)}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{f:uri.image(src: '{faviconSrc}', width: 152, height: 152, absolute: 1)}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{f:uri.image(src: '{faviconSrc}', width: 180, height: 180, absolute: 1)}">
+
+
+    <meta name="msapplication-square70x70logo" content="{f:uri.image(src: '{faviconSrc}', width: 70, height: 70, absolute: 1)}">
+    <meta name="msapplication-square150x150logo" content="{f:uri.image(src: '{faviconSrc}', width: 150, height: 150, absolute: 1)}">
+    <meta name="msapplication-square310x310logo" content="{f:uri.image(src: '{faviconSrc}', width: 310, height: 310, absolute: 1)}">
+    <meta name="msapplication-TileImage" content="{f:uri.image(src: '{faviconSrc}', width: 144, height: 144, absolute: 1)}">
+</f:if>
+</html>

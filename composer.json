@@ -1,20 +1,70 @@
 {
-  "name": "t3brightside/favicon",
-  "description": "TYPO3 CMS extension to add favicon through page settings. Renders icons for different devices.",
-  "type": "typo3-cms-extension",
-  "version": "0.1.0",
-  "keywords": ["TYPO3", "favicon"],
-  "homepage": "https://github.com/t3brightside/favicon/",
-  "license": "GPL-2.0+",
-  "authors": [
-      {
-          "name": "Tanel Põld",
-          "role": "Developer",
-          "email": "info@t3brightside.com",
-          "homepage": "https://t3brightside.com"
-      }
-  ],
-  "require": {
-    "typo3/cms-core": "^9.5 || ^10.4"
-  }
+    "name": "t3brightside/favicon",
+    "description": "TYPO3 CMS extension to add favicon through page settings. Renders icons for different devices.",
+    "type": "typo3-cms-extension",
+    "version": "0.2.0",
+    "keywords": [
+        "TYPO3",
+        "favicon"
+    ],
+    "homepage": "https://github.com/t3brightside/favicon/",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Tanel Põld",
+            "role": "Developer",
+            "email": "info@t3brightside.com",
+            "homepage": "https://t3brightside.com"
+        }
+    ],
+    "config": {
+        "bin-dir": "Build/bin",
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.2"
+        },
+        "sort-packages": true,
+        "vendor-dir": "Build/vendor"
+    },
+    "require": {
+        "typo3/cms-core": "^9.5 || ^10.4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.3.1",
+        "roave/security-advisories": "dev-master",
+        "typo3/cms-backend": "^9.5 || ^10.4",
+        "typo3/cms-extbase": "^9.5 || ^10.4",
+        "typo3/cms-extensionmanager": "^9.5 || ^10.4",
+        "typo3/cms-filelist": "^9.5 || ^10.4",
+        "typo3/cms-fluid": "^9.5 || ^10.4",
+        "typo3/cms-fluid-styled-content": "^9.5 || ^10.4",
+        "typo3/cms-frontend": "^9.5 || ^10.4",
+        "typo3/cms-install": "^9.5 || ^10.4",
+        "typo3/cms-introduction": "^4.0",
+        "typo3/cms-recordlist": "^9.5 || ^10.4",
+        "typo3/cms-rte-ckeditor": "^9.5 || ^10.4",
+        "typo3/cms-seo": "^9.5 || ^10.4",
+        "typo3/cms-tstemplate": " ^9.5 || ^10.4",
+        "typo3/cms-lowlevel": " ^9.5 || ^10.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Brightside\\Favicon\\": "Classes"
+        }
+    },
+    "scripts": {
+        "cs:fix": [
+            "./Build/bin/php-cs-fixer fix --verbose --using-cache=no --diff --diff-format=udiff"
+        ],
+        "post-autoload-dump": [
+            "mkdir -p Build/Web/typo3conf/ext/",
+            "[ -L Build/Web/typo3conf/ext/favicon ] || ln -snvf ../../../../. Build/Web/typo3conf/ext/favicon"
+        ]
+    },
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": "Build/Web"
+        }
+    }
 }
