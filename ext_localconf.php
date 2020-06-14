@@ -1,11 +1,14 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-    die ('Access denied.');
-}
+defined('TYPO3_MODE') || die();
 
-$rootlinefields = &$GLOBALS["TYPO3_CONF_VARS"]["FE"]["addRootLineFields"];
-if ($rootlinefields !== '') {
-    $rootlinefields .= ' , ';
-}
+call_user_func(
+    function () {
+        $rootlineFields = &$GLOBALS['TYPO3_CONF_VARS']['FE']['addRootLineFields'];
 
-$rootlinefields .= 'tx_favicon_favicon';
+        if ($rootlineFields !== '') {
+            $rootlineFields .= ',';
+        }
+
+        $rootlineFields .= 'tx_favicon_favicon';
+    }
+);

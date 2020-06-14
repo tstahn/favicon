@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-06-13T21:39:27Z">
+        <header/>
+        <body>
+            <trans-unit id="pages.palette.favicon">
+                <source>Favicon</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_favicon_favicon">
+                <source>Favicon</source>
+            </trans-unit>
+
+            <trans-unit id="error.file_not_saved">
+                <source>Favicon "%s" was not saved. The file dimensions need to be at least %sx%spx.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+## Description: Export database
+## Usage: db-export
+## Example: "ddev db-export"
+
+ddev exec mkdir -p "./.ddev/backup"
+ddev exec rm -f "./.ddev/backup/db.sql.gz"
+ddev export-db -f "./.ddev/backup/db.sql.gz"

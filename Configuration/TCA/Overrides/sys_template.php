@@ -1,4 +1,12 @@
 <?php
-defined('TYPO3_MODE') || die('Access denied.');
+defined('TYPO3_MODE') || die();
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('favicon', 'Configuration/TypoScript/', 'Favicon');
+call_user_func(
+    function () {
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+            'favicon',
+            'Configuration/TypoScript/Static',
+            'Favicon'
+        );
+    }
+);

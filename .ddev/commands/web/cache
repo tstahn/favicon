@@ -1,0 +1,11 @@
+#!/bin/bash
+
+## Description: Run typo3cms cache:flush to clear TYPO3 caches
+## Usage: cache
+## Example: "ddev cache"
+
+if [[ $1 == "debug" ]]; then
+    PHP_IDE_CONFIG=serverName=${DDEV_PROJECT}.ddev.site XDEBUG_CONFIG=idekey=PHPSTORM TYPO3_CONTEXT=${TYPO3_CONTEXT} ./Build/bin/typo3cms cache:flush
+else
+    TYPO3_CONTEXT=${TYPO3_CONTEXT} ./Build/bin/typo3cms cache:flush
+fi

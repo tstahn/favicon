@@ -1,0 +1,80 @@
+#
+# Unset shortcutIcon if any
+#
+page.shortcutIcon >
+
+#
+# Set custom icons
+#
+page.headerData.880909099 = FILES
+page.headerData.880909099 {
+  references.data = levelfield:-1,tx_favicon_favicon,slide
+  maxItems = 1
+  renderObj = COA
+  renderObj {
+    10 = TEXT
+    10 {
+      stdWrap.typolink {
+        parameter.stdWrap {
+          cObject = IMG_RESOURCE
+          cObject {
+            file {
+              crop.data = file:current:crop
+              import.data = file:current:uid
+              treatIdAsReference = 1
+              maxW = 16
+            }
+          }
+        }
+
+        returnLast = url
+        forceAbsoluteUrl = 1
+      }
+
+      wrap = <link rel="shortcut icon" href="|">
+      required = 1
+    }
+
+    20 < .10
+    20.stdWrap.typolink.parameter.stdWrap.cObject.file.maxW = 64
+    20.wrap = <link rel="icon" type="image/png" sizes="64x64" href="|">
+
+    # iOS
+    30 < .10
+    30.stdWrap.typolink.parameter.stdWrap.cObject.file.maxW = 57
+    30.wrap = <link rel="apple-touch-icon" type="image/png" sizes="57x57" href="|">
+
+    40 < .10
+    40.stdWrap.typolink.parameter.stdWrap.cObject.file.maxW = 60
+    40.wrap = <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="|">
+
+    50 < .10
+    50.stdWrap.typolink.parameter.stdWrap.cObject.file.maxW = 76
+    50.wrap = <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="|">
+
+    60 < .10
+    60.stdWrap.typolink.parameter.stdWrap.cObject.file.maxW = 120
+    60.wrap = <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="|">
+
+    70 < .10
+    70.stdWrap.typolink.parameter.stdWrap.cObject.file.maxW = 180
+    70.wrap = <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="|">
+
+    # Microsoft
+    200 < .10
+    200.stdWrap.typolink.parameter.stdWrap.cObject.file.maxW = 70
+    200.wrap = <meta name="msapplication-square70x70logo" content="|" />
+
+    210 < .10
+    210.stdWrap.typolink.parameter.stdWrap.cObject.file.maxW = 150
+    210.wrap = <meta name="msapplication-square150x150logo" content="|" />
+
+    220 < .10
+    220.stdWrap.typolink.parameter.stdWrap.cObject.file.maxW = 310
+    220.wrap = <meta name="msapplication-square310x310logo" content="|" />
+
+    230 < .10
+    230.stdWrap.typolink.parameter.stdWrap.cObject.file.maxW = 144
+    230.wrap = <meta name="msapplication-TileImage" content="|" />
+  }
+}

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Run php-cs-fixer
+## Usage: cs
+## Example: "ddev cs"
+
+composer cs:fix
